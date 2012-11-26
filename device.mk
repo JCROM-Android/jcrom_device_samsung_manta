@@ -106,6 +106,15 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+#JCROM
+PRODUCT_PACKAGES += \
+	busybox
+
+PRODUCT_PACKAGES += \
+	jctool \
+	bootsound \
+	stagefright
+
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := device/samsung/manta/nfc/nfcee_access.xml
@@ -199,3 +208,6 @@ $(call inherit-product-if-exists, vendor/samsung_slsi/exynos5/exynos5-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/manta/device-vendor.mk)
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4324/device-bcm.mk)
+
+$(call inherit-product-if-exists, jcrom/common/common.mk)
+
