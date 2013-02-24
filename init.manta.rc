@@ -18,25 +18,6 @@ on init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
 on post-fs-data
-    # JCROM theme
-    mkdir /data/theme 0775 system system
-    mkdir /data/theme/bootanime 0775 system system
-    mkdir /data/theme/frame 0775 system system
-    mkdir /data/theme/launcher 0775 system system
-    mkdir /data/theme/lockscreen 0775 system system
-    mkdir /data/theme/navikey 0775 system system
-    mkdir /data/theme/notification 0775 system system
-    mkdir /data/theme/wallpaper 0775 system system
-    mkdir /data/theme/screenshot 0775 system system
-    mkdir /data/theme/statusbar 0775 system system
-    mkdir /data/theme/navibar 0775 system system
-    mkdir /data/theme/simeji 0775 system system
-    mkdir /data/theme/atok 0775 system system
-    mkdir /data/theme/sounds 0775 system system
-    mkdir /data/theme/sounds/effect 0775 system system
-    mkdir /data/theme/sounds/bootsound 0775 system system
-    mkdir /data/theme/font 0775 system system
-
     mkdir /data/media 0770 media_rw media_rw
 
     setprop vold.post_fs_data_done 1
@@ -116,12 +97,6 @@ on fs
     # voice processing AEC enable
     chown root audio /sys/class/i2c-dev/i2c-4/device/4-003e/aec_enable
     chmod 0660 /sys/class/i2c-dev/i2c-4/device/4-003e/aec_enable
-
-on property:init.svc.bootanim=running
-    start bootsound
-
-on property:dev.bootcomplete=1
-    stop bootsound
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
@@ -208,17 +183,4 @@ service bugreport /system/bin/bugmailer.sh -v
     disabled
     oneshot
     keycodes 114 115 116
-
-service bootsound /system/bin/bootsound
-    class main
-    user media
-    group audio
-    disabled
-    oneshot
-
-service jctool system/bin/jctool
-	class core
-	user root
-	group root
-	oneshot
 

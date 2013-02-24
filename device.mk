@@ -106,15 +106,6 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-#JCROM
-PRODUCT_PACKAGES += \
-	busybox
-
-PRODUCT_PACKAGES += \
-	jctool \
-	bootsound \
-	stagefright
-
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := device/samsung/manta/nfc/nfcee_access.xml
