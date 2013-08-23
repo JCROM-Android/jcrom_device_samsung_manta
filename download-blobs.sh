@@ -34,8 +34,8 @@ install_blobs() {
     done
 }
 
-MAGURO_BLOBS="audience-manta-jwr66v-60ad8fb0.tgz
-              broadcom-manta-jwr66v-77e8b904.tgz"
+MAGURO_BLOBS="audience-manta-jwr66y-df20ff6a.tgz
+              broadcom-manta-jwr66y-054e1061.tgz"
 
 CSUM_LIST="$PWD/blob-shasums"
 
