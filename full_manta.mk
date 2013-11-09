@@ -21,6 +21,9 @@
 # lines, full and manta, hence its name.
 #
 
+#JCROM
+$(call inherit-product-if-exists, jcrom/samsung/manta/device-common.mk)
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
         LiveWallpapers \
@@ -29,17 +32,24 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
         net.dns1=8.8.8.8 \
         net.dns2=8.8.4.4
+
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:4.3/JWR66Y/776638:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 4.3 JWR66Y 776638 release-keys"
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
+$(call inherit-product-if-exists, vendor/samsung/manta-ext/manta-ext-vendor.mk)
 
 PRODUCT_NAME := full_manta
 PRODUCT_DEVICE := manta
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Manta
+PRODUCT_BRAND := Google
+PRODUCT_MODEL := Nexus 10
 PRODUCT_MANUFACTURER := Samsung
 PRODUCT_RESTRICT_VENDOR_FILES := owner path
+
+#JCROM
+$(call inherit-product-if-exists, jcrom/samsung/manta/device-manta.mk)
+
