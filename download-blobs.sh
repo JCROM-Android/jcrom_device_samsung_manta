@@ -34,9 +34,9 @@ install_blobs() {
     done
 }
 
-MAGURO_BLOBS="audience-manta-krt16o-acbf309f.tgz
-              broadcom-manta-krt16o-82fa3e79.tgz
-              samsung-manta-krt16o-acf5a0a5.tgz"
+MAGURO_BLOBS="audience-manta-krt16s-1362f39b.tgz
+              broadcom-manta-krt16s-5b9fd79f.tgz
+              samsung-manta-krt16s-6e2031ab.tgz"
 
 CSUM_LIST="$PWD/blob-shasums"
 
