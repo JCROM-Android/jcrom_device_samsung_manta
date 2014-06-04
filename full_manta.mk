@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
 #        net.dns1=8.8.8.8 \
 #        net.dns2=8.8.4.4
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:4.4.2/KOT49H/937116:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 4.4.2 KOT49H 937116 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:4.4.3/KTU84L/1148727:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 4.4.3 KTU84L 1148727 release-keys"
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
