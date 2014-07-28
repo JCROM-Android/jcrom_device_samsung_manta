@@ -1,4 +1,5 @@
-# Copyright (C) 2011 The Android Open Source Project
+#
+# Copyright 2014 JCROM Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -43,7 +44,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
 $(call inherit-product-if-exists, vendor/samsung/manta-ext/manta-ext-vendor.mk)
 
-PRODUCT_NAME := full_manta
+PRODUCT_NAME := jcrom_manta
 PRODUCT_DEVICE := manta
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 10
