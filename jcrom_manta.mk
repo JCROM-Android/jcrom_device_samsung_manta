@@ -22,21 +22,19 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
-PRODUCT_PROPERTY_OVERRIDES := \
-        net.dns1=8.8.8.8 \
-        net.dns2=8.8.4.4
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
 
-PRODUCT_NAME := aosp_manta
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:5.0/LRX21P/1570855:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 5.0 LRX21P 1570855 release-keys"
+
+PRODUCT_NAME := jcrom_manta
 PRODUCT_DEVICE := manta
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Manta
-PRODUCT_MANUFACTURER := Samsung
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Nexus 10
+PRODUCT_MANUFACTURER := samsung
 PRODUCT_RESTRICT_VENDOR_FILES := owner path
 
 #AOSP
-$(call inherit-product-if-exists, vendor/aosp/samsung/manta/aosp.mk)
-$(call inherit-product, device/aosp/common/aosp.mk)
+$(call inherit-product-if-exists, vendor/aosp/samsung/manta/full.mk)
+$(call inherit-product, device/aosp/common/full.mk)

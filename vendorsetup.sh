@@ -14,7 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo aosp_manta-user
-add_lunch_combo aosp_manta-userdebug
-add_lunch_combo full_manta-user
-add_lunch_combo full_manta-userdebug
+add_lunch_combo jcrom_manta-user
+add_lunch_combo jcrom_manta-userdebug
