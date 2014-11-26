@@ -14,14 +14,6 @@
 # limitations under the License.
 #
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        MagicSmokeWallpapers \
-        VisualizationWallpapers \
-        librs_jni
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
@@ -35,6 +27,6 @@ PRODUCT_MODEL := Nexus 10
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_RESTRICT_VENDOR_FILES := owner path
 
-#AOSP
-$(call inherit-product-if-exists, vendor/aosp/samsung/manta/full.mk)
-$(call inherit-product, device/aosp/common/full.mk)
+#JCROM
+$(call inherit-product, jcrom/samsung/manta/device-manta.mk)
+$(call inherit-product, jcrom/common/common.mk)
