@@ -43,3 +43,7 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on Manta
 PRODUCT_MANUFACTURER := Samsung
 PRODUCT_RESTRICT_VENDOR_FILES := owner path
+
+#AOSP
+$(call inherit-product-if-exists, vendor/aosp/samsung/manta/full.mk)
+$(call inherit-product, device/aosp/common/full.mk)
