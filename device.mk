@@ -91,8 +91,8 @@ PRODUCT_PACKAGES += \
 
 # audio effects
 PRODUCT_PACKAGES += libaudience_voicefx
-PRODUCT_COPY_FILES += \
-    device/samsung/manta/audio_effects.conf:system/etc/audio_effects.conf
+#PRODUCT_COPY_FILES += \
+#    device/samsung/manta/audio_effects.conf:system/etc/audio_effects.conf
 
 # BCM47511 GPS
 PRODUCT_COPY_FILES += \
