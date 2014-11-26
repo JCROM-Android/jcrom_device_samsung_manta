@@ -30,6 +30,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
 
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:4.4.4/KTU84P/1227136:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 4.4.4 KTU84P 1227136 release-keys"
+
 PRODUCT_NAME := full_manta
 PRODUCT_DEVICE := manta
 PRODUCT_BRAND := google
