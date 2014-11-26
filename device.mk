@@ -20,7 +20,7 @@ else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_COPY_FILES := \
+PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     device/samsung/manta/init.manta.rc:root/init.manta.rc \
     device/samsung/manta/init.manta.usb.rc:root/init.manta.usb.rc \
@@ -82,7 +82,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/manta/audio_policy.conf:system/etc/audio_policy.conf
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -155,7 +155,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     e2fsck
 
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     ro.opengles.version=196609 \
     ro.sf.lcd_density=320 \
