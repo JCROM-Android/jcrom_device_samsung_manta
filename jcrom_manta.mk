@@ -18,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, device/samsung/manta/device.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:5.0/LRX21P/1570855:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 5.0 LRX21P 1570855 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray TARGET_DEVICE=manta BUILD_FINGERPRINT=google/mantaray/manta:5.0.1/LRX22C/1602158:user/release-keys PRIVATE_BUILD_DESC="mantaray-user 5.0.1 LRX22C 1602158 release-keys"
 
 PRODUCT_NAME := jcrom_manta
 PRODUCT_DEVICE := manta
