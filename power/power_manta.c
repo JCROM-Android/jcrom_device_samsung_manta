@@ -32,6 +32,8 @@
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
+#include <cutils/properties.h>
+
 #define BOOSTPULSE_PATH "/sys/devices/system/cpu/cpufreq/interactive/boostpulse"
 #define BOOST_PATH "/sys/devices/system/cpu/cpufreq/interactive/boost"
 #define CPU_MAX_FREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
@@ -56,6 +58,30 @@ static unsigned int vsync_count;
 static struct timespec last_touch_boost;
 static bool touch_boost;
 static bool low_power_mode = false;
+
+static char *low_power_max_freq[] = {
+    LOW_POWER_MAX_FREQ,
+    "1000000",
+    "1200000",
+    "1400000",
+    NORMAL_MAX_FREQ
+};
+
+static int get_low_power_max_freq() {
+ 
+    char select_mode[PROPERTY_VALUE_MAX];
+    int select_num = 0;
+
+    property_get("persist.sys.max.freq", select_mode, NULL);
+
+    if ((strcmp(select_mode, "0") == 0) || (strcmp(select_mode, "1") == 0) || 
+        (strcmp(select_mode, "2") == 0) || (strcmp(select_mode, "3") == 0) ||
+        (strcmp(select_mode, "4") == 0)) {
+        select_num = atoi(select_mode);
+    }
+
+    return select_num;
+}
 
 static void sysfs_write(const char *path, char *s)
 {
@@ -143,16 +169,18 @@ static void power_set_interactive(struct power_module *module, int on)
 {
     struct manta_power_module *manta = (struct manta_power_module *) module;
     char buf[80];
+    int select_num = 0;
     int ret;
 
     ALOGV("power_set_interactive: %d\n", on);
 
+    select_num = get_low_power_max_freq();
     /*
      * Lower maximum frequency when screen is off.  CPU 0 and 1 share a
      * cpufreq policy.
      */
     sysfs_write(CPU_MAX_FREQ_PATH,
-                (!on || low_power_mode) ? LOW_POWER_MAX_FREQ : NORMAL_MAX_FREQ);
+                (!on || low_power_mode) ? low_power_max_freq[select_num] : NORMAL_MAX_FREQ);
 
     sysfs_write(manta->touchscreen_power_path, on ? "Y" : "N");
 
@@ -210,6 +238,7 @@ static void manta_power_hint(struct power_module *module, power_hint_t hint,
     struct manta_power_module *manta = (struct manta_power_module *) module;
     struct timespec now, diff;
     char buf[80];
+    int select_num = 0;
     int len;
 
     switch (hint) {
@@ -251,9 +280,10 @@ static void manta_power_hint(struct power_module *module, power_hint_t hint,
         break;
 
     case POWER_HINT_LOW_POWER:
+        select_num = get_low_power_max_freq();
         pthread_mutex_lock(&manta->lock);
         if (data)
-            sysfs_write(CPU_MAX_FREQ_PATH, LOW_POWER_MAX_FREQ);
+            sysfs_write(CPU_MAX_FREQ_PATH, low_power_max_freq[select_num]);
         else
             sysfs_write(CPU_MAX_FREQ_PATH, NORMAL_MAX_FREQ);
         low_power_mode = data;
